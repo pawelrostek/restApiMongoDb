@@ -1,0 +1,19 @@
+<div class="container" ng-controller="UsersCtrl">
+  <div class="page-header">
+    <h3>This is from {{ name }}</h3>
+  </div>
+
+  <p class="lead">Factory Users
+    <code>Users</code>
+  </p>
+
+  <p class="lead">
+    <table class="table table-striped table-hover table-condensed">
+      <tr ng-repeat="users in user">
+        <td><b>Name</b> : {{user.todo}}</td>
+        <td><em>Login</em>: {{user.isCompleted}}</td>
+      </tr>
+    </table>
+  </p>
+
+</div>
