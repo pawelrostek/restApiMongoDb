@@ -1,0 +1,39 @@
+  <div class="page-header">
+    <h4>Users list from:
+      <code>/api/v1/users</code>
+    </h4>
+  </div>
+  <p class="lead">
+
+    <button ng-click="addNew('users')" class="btn btn-xs btn-success" value="btn-xs" type="button"><span class="glyphicon glyphicon-plus"></span> Add new</button>
+
+    <table class="table table-striped">
+      <tr>
+        <th>ID</th>
+        <th>Type</th>
+        <th>External ID</th>
+        <th>Firstanme</th>
+        <th>Lastname</th>
+        <th>Login</th>
+<!--         <th>Password</th>
+        <th>UID</th> -->
+        <th>Insert time</th>
+        <th>Action</th>
+      </tr>
+      <tr ng-repeat="d in dataList">
+        <td>{{d.user_id}}</td>
+        <td>{{d.user_type_id}}</td>
+        <td>{{d.user_external_id}}</td>
+        <td>{{d.first_name}}</td>
+        <td>{{d.last_name}}</td>
+        <td>{{d.login}}</td>
+<!--         <td>{{d.password}}</td>
+        <td>{{d.uid}}</td> -->
+        <td>{{d.user_create_date}}</td>
+        <td>
+          <button ng-click="edit('users')" class="btn btn-xs btn-info" value="btn-xs" type="button"><span class="glyphicon glyphicon-pencil"></span></button>
+          <button ng-click="delete('users')" class="btn btn-xs btn-danger" value="btn-xs" type="button"><span class="glyphicon glyphicon-trash"></span></button>
+        </td>
+      </tr>
+    </table>
+  </p>

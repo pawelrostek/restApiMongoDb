@@ -1,23 +1,27 @@
-myApp.factory('todosFactory', function($http) {
-  /** https://docs.angularjs.org/guide/providers **/
-  var urlBase = 'http://mean-todo-app.herokuapp.com/api/todos';
-  var _todosFactory = {};
 
-  _todosFactory.getTodos = function() {
-    return $http.get(urlBase);
+
+myApp.factory('dataFactory', function($http) {
+
+  var urlBase = 'http://localhost:4000/api/v1/';
+
+  var _dataFactory = {};
+
+  _dataFactory.add = function(item, model) {
+    return $http.post(urlBase + model + '/', item);
   };
 
-  _todosFactory.saveTodo = function(todo) {
-    return $http.post(urlBase, todo);
+  _dataFactory.get = function(model) {
+    return $http.get(urlBase + model + '/');
+  }; 
+
+  _dataFactory.update = function(item, model) {
+    return $http.put(urlBase + model + '/', item);
   };
 
-  _todosFactory.updateTodo = function(todo) {
-    return $http.put(urlBase, todo);
+  _dataFactory.delete = function(id, model) {
+    return $http.delete(urlBase + model + '/' + id);
   };
-
-  _todosFactory.deleteTodo = function(id) {
-    return $http.delete(urlBase + '/' + id);
-  };
-
-  return _todosFactory;
+ 
+  return _dataFactory;
 });
+

@@ -6,9 +6,12 @@
  *  @description    This router is createt only for testing time
  *  
  */
+var AD_CONFIG_JSOV = '../../config/activedirectory.json';
+var SECRET_SALT_FN = '../../config/secret';
+
 var jwt = require('jwt-simple'),
         activeDirectory = require('activedirectory'),
-        adConfig = require('../../config/activedirectory.json');
+        adConfig = require(AD_CONFIG_JSOV);
 
 var ad = new activeDirectory(adConfig.main);
 
@@ -30,10 +33,10 @@ var auth = {
             } else {
                 ad.findUser(username, function (err, data) {
 
-                    var expires = expiresIn(1); // 7 days
+                    var expires = expiresIn(1); // 1 days
                     var token = jwt.encode({
                         exp: expires
-                    }, require('../../config/secret')());
+                    }, require(SECRET_SALT_FN)());
 
                     var result = {
                         token: token,
@@ -86,7 +89,7 @@ function genToken(user) {
     var expires = expiresIn(1); // 1 days
     var token = jwt.encode({
         exp: expires
-    }, require('../../config/secret')());
+    }, require(SECRET_SALT_FN)());
 
     return {
         token: token,

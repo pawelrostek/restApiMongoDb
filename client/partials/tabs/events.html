@@ -1,0 +1,27 @@
+  <div class="page-header">
+    <h4>Events list from:
+      <code>/api/v1/evnts</code>
+    </h4>
+  </div>
+  <p class="lead">
+    
+    <button ng-click="addNew('events')" class="btn btn-xs btn-success" value="btn-xs" type="button"><span class="glyphicon glyphicon-plus"></span> Add new</button>
+
+    <table class="table table-striped">
+      <tr>
+        <th>ID</th>
+        <th>Type</th>
+        <th>Insert time</th>
+        <th>Action</th>
+      </tr>
+      <tr ng-repeat="d in dataList">
+        <td>{{d.event_id}}</td>
+        <td>{{d.event_type_id}}</td>
+        <td>{{d.event_date}}</td>
+        <td>
+          <button ng-click="edit('events')" class="btn btn-xs btn-info" value="btn-xs" type="button"><span class="glyphicon glyphicon-pencil"></span></button>
+          <button ng-click="delete('events')" class="btn btn-xs btn-danger" value="btn-xs" type="button"><span class="glyphicon glyphicon-trash"></span></button>
+        </td>
+      </tr>
+    </table>
+  </p>

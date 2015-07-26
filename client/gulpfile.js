@@ -3,7 +3,7 @@ var gulp = require('gulp'),
 
 var paths = {
   app: './',
-  src: ['./*.html', './partials/*.html', './css/*.css', './js/*.js']
+  src: ['./*.html', './partials/*.html', './partials/tabs/*.html', './css/*.css', './js/*.js']
 };
 
 gulp.task('connect', function() {

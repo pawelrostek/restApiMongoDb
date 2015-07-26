@@ -1,18 +1,26 @@
 <div class="navbar navbar-default navbar-fixed-top" role="navigation" ng-controller="HeaderCtrl">
-    <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button> <a class="navbar-brand" href="#">Notifies</a>
-        </div>
-        <div class="collapse navbar-collapse">
-            <ul class="nav navbar-nav">
-                <li ng-class="{active:isActive('/')}"><a href="#">Home</a></li>
-                <li ng-class="{active:isActive('/users')}"><a href="#">Users</a></li>
-            </ul>
-        </div>
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button> <a class="navbar-brand logo" href="#"><span class="glyphicon glyphicon-envelope"></span> Notifier</a>
     </div>
+
+    <div class="collapse navbar-collapse" ng-switch on="showMenu">
+      <div ng-switch-when="true">
+        <ul class="nav navbar-nav">
+          <li ng-class="{active:isActive('/')}"><a href="#">Home</a></li>
+          <li ng-class="{active:isActive('/data-factories')}"><a ng-href="#/data-factories">RestApi</a></li>
+        </ul>
+        <div class="navbar-brand pull-right">
+            <button ng-click="userProfil" class="btn btn-sm btn-warning" type="button"><span class="glyphicon glyphicon-user"></span></button>
+            <button ng-click="logout" class="btn btn-sm btn-primary" type="button"><span class="glyphicon glyphicon-log-out"></span> Logout</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
 </div>
