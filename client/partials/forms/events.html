@@ -2,13 +2,13 @@
     <div class="modal-header">
         <h3 class="modal-title">Events: </h3>
     </div>
-    <form data-toggle="validator">
+    <form data-toggle="validator" name="formElement" ng-submit="save(formElement.$valid)">
         <div class="modal-body">
-            <input type="number" ng-model="formData.event_id" class="form-control" placeholder="ID">
-            <input type="number" ng-model="formData.event_type_id" class="form-control" placeholder="Type ID">
+            <input type="number" ng-model="formData.event_id" class="form-control" placeholder="ID" required>
+            <input type="number" ng-model="formData.event_type_id" class="form-control" placeholder="Type ID" required>
         </div>
         <div class="modal-footer">
-            <button type="submit" class="btn btn-primary" ng-click="save()">Zapisz</button>
+            <button type="submit" class="btn btn-primary" >Zapisz</button>
             <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
         </div>
     </form>

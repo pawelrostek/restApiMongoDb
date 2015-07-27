@@ -33,27 +33,24 @@ myApp.controller("DataFactoryList", ['$scope', '$modal', 'dataFactory', function
 
         $scope.addNew = function (type) {
             $scope.dataType = type;
-            $scope.actionType = 'add';
-            modal($scope, $modal, dataFactory);
+            modal($scope, $modal, null, dataFactory);
         }
-        $scope.edit = function (type) {
+        $scope.edit = function (type, id) {
             $scope.dataType = type;
-            $scope.actionType = 'edit';
-            console.log('Edit: ' + type);
+            modal($scope, $modal, id, dataFactory);
         }
         $scope.del = function (type, id) {
             $scope.dataType = type;
-            $scope.actionType = 'delete';
-            dataFactory.delete(id, type);
-//            $scope.dataList.push(data);
+            modal($scope, $modal, id, dataFactory);;
         }
 
         $scope.getData('eventTypes');
     }
 ]);
 
-var modal = function ($scope, $modal, dataFactory) {
-    $scope.formData = {isReadonly: false};
+var modal = function ($scope, $modal, id, dataFactory) {
+    $scope.formData = {isReadonly: (id)};
+    
     var temp;
     if($scope.dataType == 'eventTypes')
         temp = 'partials/forms/eventTypes.html';
@@ -74,7 +71,7 @@ var modal = function ($scope, $modal, dataFactory) {
     });
 
     modalInstance.result.then(function (data) {
-        console.info("Save result");
+        console.info("Save result: ");
         dataFactory.add(data, $scope.dataType);
         $scope.dataList.push(data);
     }, function () {

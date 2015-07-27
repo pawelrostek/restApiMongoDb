@@ -20,7 +20,7 @@ myApp.factory('dataFactory', function($http) {
   };
 
   _dataFactory.delete = function(id, model) {
-    return $http.delete(urlBase + model + '/:event_id/' + id);
+    return $http.delete(urlBase + model + '/' + id);
   };
  
   return _dataFactory;
