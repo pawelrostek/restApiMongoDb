@@ -22,13 +22,13 @@ myApp.controller('LoginCtrl', ['$scope', '$window', '$location', 'UserAuthFactor
           $window.sessionStorage.user = data.user.sAMAccountName; // to fetch the user details on refresh
           $window.sessionStorage.userRole = data.user.sn; // to fetch the user details on refresh
  
-          $location.path("/");
+          $location.path("/home");
  
         }).error(function(status) {
           alert('Oops something went wrong!');
         });
       } else {
-        alert('Invalid credentials');
+//        alert('Invalid credentials');
       }
  
     };

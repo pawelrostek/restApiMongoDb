@@ -7,6 +7,7 @@ myApp.factory('dataFactory', function($http) {
   var _dataFactory = {};
 
   _dataFactory.add = function(item, model) {
+      console.info('Add new item: ' + model);
     return $http.post(urlBase + model + '/', item);
   };
 
@@ -19,7 +20,7 @@ myApp.factory('dataFactory', function($http) {
   };
 
   _dataFactory.delete = function(id, model) {
-    return $http.delete(urlBase + model + '/' + id);
+    return $http.delete(urlBase + model + '/:event_id/' + id);
   };
  
   return _dataFactory;

@@ -1,0 +1,22 @@
+<div>
+    <div class="modal-header">
+        <h3 class="modal-title">User</h3>
+    </div>
+    <form data-toggle="validator">
+        <div class="modal-body">
+            <input type="number" ng-model="formData.user_id" class="form-control" placeholder="ID">
+            <input type="number" ng-model="formData.user_type_id" class="form-control" placeholder="Typ">
+            <input type="text" ng-model="formData.user_external_id" class="form-control" placeholder="External ID">
+            <input type="text" ng-model="formData.first_name" class="form-control" placeholder="First name">
+            <input type="text" ng-model="formData.last_name" class="form-control" placeholder="Last name">
+            <input type="number" ng-model="formData.uid" class="form-control" placeholder="UID">
+            <input type="text" ng-model="formData.login" class="form-control" placeholder="Login">
+            <input type="password" ng-model="formData.password" class="form-control" placeholder="Password">
+        </div>
+        <div class="modal-footer">
+            <button type="submit" class="btn btn-primary" ng-click="save()">Zapisz</button>
+            <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+        </div>
+    </form>
+
+</div>

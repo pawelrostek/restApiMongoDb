@@ -17,7 +17,7 @@
       <tr ng-repeat="d in dataList">
         <td>{{d.event_id}}</td>
         <td>{{d.event_type_id}}</td>
-        <td>{{d.event_date}}</td>
+        <td>{{d.event_date | date:'yyyy-MM-dd HH:mm' : format : timezone}}</td>
         <td>
           <button ng-click="edit('events')" class="btn btn-xs btn-info" value="btn-xs" type="button"><span class="glyphicon glyphicon-pencil"></span></button>
           <button ng-click="delete('events')" class="btn btn-xs btn-danger" value="btn-xs" type="button"><span class="glyphicon glyphicon-trash"></span></button>

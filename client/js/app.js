@@ -15,7 +15,7 @@ myApp.config(function($routeProvider, $httpProvider) {
       access: {
         requiredLogin: false
       }
-    }).when('/', {
+    }).when('/home', {
       templateUrl: 'partials/home.html',
       controller: 'Home',
       access: {
@@ -51,7 +51,7 @@ myApp.run(function($rootScope, $window, $location, AuthenticationFactory) {
     $rootScope.role = AuthenticationFactory.userRole;
     // if the user is already logged in, take him to the home page
     if (AuthenticationFactory.isLogged == true && $location.path() == '/login') {
-      $location.path('/');
+      $location.path('/home');
     }
   });
 });

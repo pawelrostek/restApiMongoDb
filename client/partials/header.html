@@ -6,18 +6,18 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
-      </button> <a class="navbar-brand logo" href="#"><span class="glyphicon glyphicon-envelope"></span> Notifier</a>
+      </button> <a class="navbar-brand logo" href="#/home"><span class="glyphicon glyphicon-envelope"></span> Notifier</a>
     </div>
 
     <div class="collapse navbar-collapse" ng-switch on="showMenu">
       <div ng-switch-when="true">
         <ul class="nav navbar-nav">
-          <li ng-class="{active:isActive('/')}"><a href="#">Home</a></li>
+          <li ng-class="{active:isActive('/home')}"><a href="#/home">Home</a></li>
           <li ng-class="{active:isActive('/data-factories')}"><a ng-href="#/data-factories">RestApi</a></li>
         </ul>
         <div class="navbar-brand pull-right">
-            <button ng-click="userProfil" class="btn btn-sm btn-warning" type="button"><span class="glyphicon glyphicon-user"></span></button>
-            <button ng-click="logout" class="btn btn-sm btn-primary" type="button"><span class="glyphicon glyphicon-log-out"></span> Logout</button>
+            <button ng-click="userProfil()" class="btn btn-sm btn-warning" type="button"><span class="glyphicon glyphicon-user"></span></button>
+            <button ng-click="logout()" class="btn btn-sm btn-primary" type="button"><span class="glyphicon glyphicon-log-out"></span> Logout</button>
         </div>
       </div>
     </div>

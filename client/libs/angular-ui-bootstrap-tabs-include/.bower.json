@@ -38,6 +38,5 @@
   },
   "_source": "git://github.com/amarnus/angular-ui-bootstrap-tabs-include.git",
   "_target": "~0.1.0",
-  "_originalSource": "angular-ui-bootstrap-tabs-include",
-  "_direct": true
+  "_originalSource": "angular-ui-bootstrap-tabs-include"
 }
