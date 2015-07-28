@@ -43,7 +43,14 @@
 
     <body>
         <div ng-include="'partials/header.html'"></div>
-        <div class="container" ng-view></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <div ng-view></div>
+                </div>
+                <div class="col-lg-4" ng-include="'partials/tabs/eventTypes.html'">test</div>
+            </div>
+        </div>
         <div ng-include="'partials/footer.html'"></div>
     </body>
 

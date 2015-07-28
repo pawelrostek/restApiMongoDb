@@ -45,5 +45,35 @@ code {
   margin-bottom: 10px
 }
 .navbar-nav {
-  margin-top: 10px;
+  margin-top: 10px !important;
+}
+
+.table-striped>tbody>tr:nth-child(odd)>th {
+    background-color: rgb(176, 205, 226) !important;
+}
+.table-striped>tbody>tr:nth-child(odd)>td {
+  background-color: rgb(228, 239, 249) !important;
+}
+
+
+table {
+    counter-reset: rowNumber;
+}
+
+table tr {
+    counter-increment: rowNumber;
+}
+
+table tr td:first-child::before {
+    content: counter(rowNumber);
+    min-width: 1em;
+    margin-right: 0.5em;
+}
+
+.css-serial {
+counter-reset: serial-number; /* Set the serial number counter to 0 */
+}
+.css-serial td:first-child:before {
+counter-increment: serial-number; /* Increment the serial number counter */
+content: counter(serial-number); /* Display the counter */
 }

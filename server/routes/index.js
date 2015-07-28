@@ -32,22 +32,22 @@ router.post('/auth', authModule.login);
 /*
  * Routes that can be accessed only by autheticated users
  */
-//Users
+// Model Users
 var UsersModel = require('../models/users');
     UsersModel.methods(['get', 'post', 'put', 'delete']);
-    UsersModel.register(router, '/api/v1/users/');
+    UsersModel.register(router, '/api/v1/users');
 
-//Events
+// Model Events
 var EventsModel = require('../models/events');
-    EventsModel.methods(['get', 'post', 'put', 'delete']);
-    EventsModel.register(router, '/api/v1/events/');
+    EventsModel.methods(['get', 'put', 'post', 'delete']);
+    EventsModel.register(router, '/api/v1/events');
 
-//EventTypes
+// Model EventTypes
 var EventTypesModel = require('../models/eventTypes');
     EventTypesModel.methods(['get', 'post', 'put', 'delete']);
-    EventTypesModel.register(router, '/api/v1/eventTypes/');
+    EventTypesModel.register(router, '/api/v1/eventTypes');
 
-//Category
+// Model Category
 var CategoryModel = require('../models/category');
     router.get('/api/v1/category/:id', CategoryModel.getOne);       //Find
     router.post('/api/v1/category/', CategoryModel.create);         //Create
