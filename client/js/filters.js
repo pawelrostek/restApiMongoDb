@@ -1,6 +1,14 @@
-myApp.filter('checkmark', function() {
-  /** https://docs.angularjs.org/guide/filter **/
+/**
+ * 
+ *  Filters
+ *      
+ *  @author         Paweł Rostek
+ *  @description    Filters
+ *  
+ */
 
+myApp.filter('checkmark', function() {
+  
   var filterFunction = function(input) {
     return input ? '\u2713' : '\u2718';
   };

@@ -1,3 +1,11 @@
+/**
+ * 
+ *  Controllers
+ *      
+ *  @author         Paweł Rostek
+ *  @description    Controllers
+ *  
+ */
 
 //HEADER CONTROLLER
 myApp.controller("HeaderCtrl", ['$scope', '$location', 'UserAuthFactory',
@@ -13,60 +21,42 @@ myApp.controller("HeaderCtrl", ['$scope', '$location', 'UserAuthFactory',
     }
 ]);
 
-myApp.controller('Home', function ($scope, $timeout, blockUI, Notification) {
-
-console.log('Loading home');
+myApp.controller('Home', function ($scope) {
     $scope.name = "Info";
-    //Notification.primary | info | success | warning | error | clearAll
-
-    var myBlockUI = blockUI.instances.get('myBlockUI');
-    myBlockUI.start();
-    $timeout(function () {
-//        Notification.info({message: 'Loaded data', title: 'Loading', delay: 3000});
-        myBlockUI.stop();
-    }, 2000);
 });
 
 //DATA FACTORY CONTROLLER
-myApp.controller("DataFactoryList", ['$scope', '$modal', 'dataFactory', function ($scope, $modal, dataFactory) {
+myApp.controller("DataFactoryList", function ($scope, $modal, dataFactory, Notification) {
 
-        $scope.dataList = [];
-        $scope.dataType = null;
+    //Notification.primary | info | success | warning | error | clearAll
+  $scope.dataList = [];
 
-        $scope.getData = function (type) {
-            $scope.dataType = type;
-            dataFactory.get(type).then(function (data) {
-                $scope.dataList = data.data;
-            });
-        }
+  $scope.getItems = function(type){
+    dataFactory.get(type).then(function (data) {
+      $scope.dataList = data.data;
+    });
+  }
+  $scope.addItem = function(type){
+    modalDial(type, null, 'add');
+  }
+  $scope.editItem = function(type, item){
+    modalDial(type, item, 'edit');
+  }
+  $scope.delItem = function(type, item){
+    modalDial(type, item, 'del');
+  }
 
-        $scope.addNew = function (type) {
-            $scope.dataType = type;
-            $scope.action = 'add';
-            modal($scope, $modal, null, dataFactory);
-        }
-        $scope.edit = function (type, item) {
-            $scope.dataType = type;
-            $scope.action = 'edit';
-            $scope.item = item;
-            modal($scope, $modal, item, dataFactory);
-        }
-        $scope.del = function (type, item) {
-            dataFactory.delete(item['_id'], type);
-            $scope.dataList.splice($scope.dataList.indexOf(item), 1); 
-        }
+  $scope.getItems('eventTypes');
 
-        $scope.getData('eventTypes');
-    }
-]);
 
-var modal = function ($scope, $modal, item, dataFactory) {
+  var modalDial = function(type, item, action){
+   
+    $scope.formData = {isReadonly: (action == 'del')};
+    console.log((action == 'del'));
 
-    $scope.formData = {isReadonly: false};
-    
     var modalInstance = $modal.open({
         animation: true,
-        templateUrl: 'partials/forms/' + $scope.dataType + '.html',
+        templateUrl: 'partials/forms/' + type + '.html',
         controller: 'ModalInstanceCtrl',
         resolve: {
             formData: function () {
@@ -76,19 +66,34 @@ var modal = function ($scope, $modal, item, dataFactory) {
     });
 
     modalInstance.result.then(function (data) {
-        if($scope.action == 'add') {
-            dataFactory.add(data, $scope.dataType);
-            $scope.dataList.push(data);
-        }
-        if($scope.action == 'edit'){
-            console.log("Edycja");
-//            ??POPULATE FORM
-//            $scope.formData = $scope.item;
-        }
-    }, function () {
-        console.warn("cancel");
+
+      if(action == 'add' && confirm('Dodać nowy element?')){
+
+        dataFactory.add(data, type);
+        $scope.dataList.push(data);
+        Notification.success({message: 'Add new item'});
+      }
+
+      /*
+          TODO: update rest api request prepare
+      */
+      if(action == 'edit' && confirm('Zapisać zmiany?')){
+
+        dataFactory.update(item['_id'], type);
+        Notification.info({message: 'Edit item'});
+      }
+
+      if(action == 'del' && confirm('Usunąć wybrany element?')){
+
+        dataFactory.delete(item['_id'], type);
+        $scope.dataList.splice($scope.dataList.indexOf(item), 1); 
+        Notification.error({message: 'Delete item'});
+      }
+
     });
-}
+
+  }
+});
 
 myApp.controller('ModalInstanceCtrl', function ($scope, $modalInstance, formData) {
 

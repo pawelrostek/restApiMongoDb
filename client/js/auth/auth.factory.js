@@ -1,3 +1,11 @@
+/**
+ * 
+ *  Auth Active Directory Factories
+ *      
+ *  @author         Paweł Rostek
+ *  @description    Factories od autentication
+ *  
+ */
 
 myApp.factory('AuthenticationFactory', function($window) {
   var auth = {

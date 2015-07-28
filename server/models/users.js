@@ -6,20 +6,24 @@
  *  @description    Model of Users
  *  
  */
+
+ // Dependencies
 var restful = require('node-restful'),
 	mongoose = restful.mongoose;
 
-// Users
+// Model schema
 var usersSchema = new mongoose.Schema({
-	user_id: Number,
-        user_type_id: Number,
-        user_external_id: String,
-        first_name: String,
+	id: Number,
+	type_id: Number,
+    external_id: String,
+    first_name: String,
 	last_name: String,
+	email: String,
+	phone: Number,
 	login: String,
 	password: String,
-	uid: String,
-        user_create_date: { type: Date, default: Date.now }
+    insert_time: { type: Date, default: Date.now }
 });
 
+// Return model
 module.exports = restful.model('Users', usersSchema);

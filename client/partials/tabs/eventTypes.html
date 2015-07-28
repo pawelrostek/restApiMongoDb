@@ -5,7 +5,7 @@
         </h4>
     </div>
     <p class="lead">
-        <button ng-click="addNew('eventTypes')" class="btn btn-sm btn-success" value="btn-sm" type="button"><span class="glyphicon glyphicon-plus"></span> Add new</button>
+        <button ng-click="addItem('eventTypes')" class="btn btn-sm btn-success" value="btn-sm" type="button"><span class="glyphicon glyphicon-plus"></span> Add new</button>
     </p>
 
     <table class="table table-striped css-serial">
@@ -15,14 +15,14 @@
             <th>Name</th>
             <th>Action</th>
         </tr>
-        <tr ng-repeat="d in dataList">
+        <tr ng-repeat="item in dataList">
             <td>&nbsp;</td>
-            <td>{{d.event_type_id}}</td>
-            <td>{{d.event_type_name}}</td>
+            <td>{{item.event_type_id}}</td>
+            <td>{{item.event_type_name}}</td>
             <td>
                 <div class="pull-right">
-                    <button ng-click="edit('eventTypes', d._id)" class="btn btn-xs btn-info" value="btn-xs" type="button"><span class="glyphicon glyphicon-pencil"></span></button>
-                    <button ng-click="del('eventTypes', d._id)" class="btn btn-xs btn-danger" value="btn-xs" type="button"><span class="glyphicon glyphicon-trash"></span></button>
+                    <button ng-click="editItem('eventTypes', item)" class="btn btn-xs btn-info" value="btn-xs" type="button"><span class="glyphicon glyphicon-pencil"></span></button>
+                    <button ng-click="delItem('eventTypes', item)" class="btn btn-xs btn-danger" value="btn-xs" type="button"><span class="glyphicon glyphicon-trash"></span></button>
                 </div>
             </td>
         </tr>

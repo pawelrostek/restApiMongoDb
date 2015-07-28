@@ -6,6 +6,7 @@
  *  @description    This will check if the token is valid
  *  
  */
+ 
 var jwt = require('jwt-simple');
 var validateUser = require('../routes/auth/activeDirectory').validateUser;
 

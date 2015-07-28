@@ -1,3 +1,11 @@
+/**
+ * 
+ *  Auth Active Directory Controller
+ *      
+ *  @author         Paweł Rostek
+ *  @description    Controller of authentications
+ *  
+ */
 
 myApp.controller('LoginCtrl', ['$scope', '$window', '$location', 'UserAuthFactory', 'AuthenticationFactory',
   function($scope, $window, $location, UserAuthFactory, AuthenticationFactory) {

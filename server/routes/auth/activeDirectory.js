@@ -6,11 +6,13 @@
  *  @description    This router is createt only for testing time
  *  
  */
+
 var AD_CONFIG_JSOV = '../../config/activedirectory.json';
 var SECRET_SALT_FN = '../../config/secret';
 
-var jwt = require('jwt-simple'),
-        activeDirectory = require('activedirectory'),
+ // Dependencies
+var jwt = require('jwt-simple');
+var activeDirectory = require('activedirectory');
         adConfig = require(AD_CONFIG_JSOV);
 
 var ad = new activeDirectory(adConfig.main);

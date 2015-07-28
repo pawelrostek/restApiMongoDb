@@ -6,6 +6,8 @@
  *  @description    Main application router
  *  
  */
+
+ // Dependencies
 var express = require('express');
 var mongoose = require('mongoose');
 
@@ -47,13 +49,10 @@ var EventTypesModel = require('../models/eventTypes');
     EventTypesModel.methods(['get', 'post', 'put', 'delete']);
     EventTypesModel.register(router, '/api/v1/eventTypes');
 
-// Model Category
+// Model EventTypes
 var CategoryModel = require('../models/category');
-    router.get('/api/v1/category/:id', CategoryModel.getOne);       //Find
-    router.post('/api/v1/category/', CategoryModel.create);         //Create
-    router.get('/api/v1/category', CategoryModel.getAll);          //Read
-    router.put('/api/v1/category/:id', CategoryModel.update);       //Update
-    router.delete('/api/v1/category/:id', CategoryModel.delete);    //Delete
+    CategoryModel.methods(['get', 'post', 'put', 'delete']);
+    CategoryModel.register(router, '/api/v1/category');
 
 
 module.exports = router;

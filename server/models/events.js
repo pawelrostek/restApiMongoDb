@@ -6,15 +6,17 @@
  *  @description    Model of Events
  *  
  */
+
 // Dependencies
 var restful = require('node-restful'),
 	mongoose = restful.mongoose;
 
-// Events schema
+// Model schema
 var eventsSchema = new mongoose.Schema({
-	event_id: Number,
-	event_type_id: Number,
-        event_date: { type: Date, default: Date.now }
+	id: Number,
+	type_id: Number,
+	data: String,
+    insert_time: { type: Date, default: Date.now }
 });
 
 // Return model

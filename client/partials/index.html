@@ -55,3 +55,8 @@
     </body>
 
 </html>
+    var myBlockUI = blockUI.instances.get('myBlockUI');
+    myBlockUI.start();
+    $timeout(function () {
+        myBlockUI.stop();
+    }, 2000);

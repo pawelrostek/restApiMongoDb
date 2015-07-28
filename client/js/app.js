@@ -1,10 +1,20 @@
+/**
+ * 
+ *  Main Appp
+ *      
+ *  @author         Paweł Rostek
+ *  @description    Main App - loading extendent dependencies
+ *  
+ */
+
 var myApp = angular.module('notifier', [
     'ngRoute',
     'ui.bootstrap',
     'ui.bootstrap.tabs.include',
     'blockUI',
     'ngAnimate',
-    'ui-notification'
+    'ui-notification',
+    'ui-splash'
 ]);
 
 myApp.config(function (blockUIConfig) {
@@ -12,30 +22,14 @@ myApp.config(function (blockUIConfig) {
     // Change the default overlay message
     blockUIConfig.message = 'Please wait...';
 
-
     // Disable automatically blocking of the user interface
     blockUIConfig.autoBlock = true;
     
     // Change the default delay to 100ms before the blocking is visible
-    blockUIConfig.delay = 10;
+    blockUIConfig.delay = 20;
 
     // Disable clearing block whenever an exception has occurred
     blockUIConfig.resetOnException = true;
-
-    // ... or completely remove the delay
-//    blockUIConfig.delay = 0;
-    // Provide a custom template to use
-//    blockUIConfig.template = '<pre><code>{{ state | json }}</code></pre>';
-    // Provide the custom template via a url
-//    blockUIConfig.templateUrl = 'my-templates/block-ui-overlay.html';
-    
-    // Tell the blockUI service to ignore certain requests
-//    blockUIConfig.requestFilter = function(config) {
-//        // If the request starts with '/api/quote' ...
-//        if(config.url.match(/^\/api\/quote($|\/).*/)) {
-//            return false; // ... don't block it.
-//        }
-//    };
 
 });
 
@@ -67,9 +61,17 @@ myApp.config(function ($routeProvider, $httpProvider) {
     });
 });
 
-myApp.run(function ($rootScope, $window, $location, AuthenticationFactory) {
+myApp.run(function ($rootScope, $window, $location, AuthenticationFactory, $splash) {
     // when the page refreshes, check if the user is already logged in
     AuthenticationFactory.check();
+
+    // Magic Splash
+    $rootScope.openSplash = function () {
+        $splash.open({
+            title: 'Hi there!',
+            message: "This sure is a fine modal, isn't it?"
+        });
+    };
 
     $rootScope.$on("$routeChangeStart", function (event, nextRoute, currentRoute) {
         if ((nextRoute.access && nextRoute.access.requiredLogin) && !AuthenticationFactory.isLogged) {
