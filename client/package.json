@@ -1,6 +1,7 @@
 {
   "name": "notifier",
   "version": "0.1.0",
+  "description": "Client RestApi of Service Notifies",
   "dependencies": {
     "bower": "^1.3.9",
     "gulp": "^3.8.7",

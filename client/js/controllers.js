@@ -74,14 +74,10 @@ myApp.controller("DataFactoryList", function ($scope, $modal, dataFactory, Notif
 
     var modalDial = function (type, item, action) {
 
-        if(item){
+        if(item !== null && action != 'add'){
+            item.isReadonly = (action == 'del');
             $scope.formData = item;
-        } else {
-            $scope.formData = [];
         }
-        
-        
-        $scope.formData.isReadonly = (action == 'del');
 
         var modalInstance = $modal.open({
             animation: true,

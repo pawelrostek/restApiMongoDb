@@ -5,7 +5,7 @@
     <form data-toggle="validator" name="formElement" ng-submit="save(formElement.$valid)">
         <div class="modal-body">
             <div class="form-group">
-                <select name="type_id" class="form-control"
+                <select class="form-control"
                         ng-model="formData.type_id" 
                         ng-options="item._id as item.name for item in eventTypes"
                         required> 
