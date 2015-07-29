@@ -30,7 +30,7 @@ myApp.controller('LoginCtrl', ['$scope', '$window', '$location', 'UserAuthFactor
           $window.sessionStorage.user = data.user.sAMAccountName; // to fetch the user details on refresh
           $window.sessionStorage.userRole = data.user.sn; // to fetch the user details on refresh
  
-          $location.path("/home");
+          $location.path("/data-factories");
  
         }).error(function(status) {
           alert('Oops something went wrong!');

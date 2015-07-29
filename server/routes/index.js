@@ -25,7 +25,6 @@ mongoose.connect('mongodb://localhost/notifies', function (err, db) {
     }
 });
 
-
 /*
  * Routes that can be accessed by any one
  */
@@ -53,6 +52,12 @@ var EventTypesModel = require('../models/eventTypes');
 var CategoryModel = require('../models/category');
     CategoryModel.methods(['get', 'post', 'put', 'delete']);
     CategoryModel.register(router, '/api/v1/category');
+
+// Model UserTypes
+var UserTypesModel = require('../models/userTypes');
+    UserTypesModel.methods(['get', 'post', 'put', 'delete']);
+    UserTypesModel.register(router, '/api/v1/userTypes');
+
 
 
 module.exports = router;

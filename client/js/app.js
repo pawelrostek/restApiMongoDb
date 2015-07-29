@@ -24,7 +24,7 @@ myApp.config(function (blockUIConfig) {
 
     // Disable automatically blocking of the user interface
     blockUIConfig.autoBlock = true;
-    
+
     // Change the default delay to 100ms before the blocking is visible
     blockUIConfig.delay = 20;
 
@@ -45,20 +45,20 @@ myApp.config(function ($routeProvider, $httpProvider) {
                     requiredLogin: false
                 }
             }).when('/home', {
-        templateUrl: 'partials/home.html',
-        controller: 'Home',
-        access: {
-            requiredLogin: true
-        }
-    }).when('/data-factories', {
-        templateUrl: 'partials/dataFactoryList.html',
-        controller: 'DataFactoryList',
-        access: {
-            requiredLogin: true
-        }
-    }).otherwise({
-        redirectTo: '/login'
-    });
+                templateUrl: 'partials/home.html',
+                controller: 'Home',
+                access: {
+                    requiredLogin: true
+                }
+            }).when('/data-factories', {
+                templateUrl: 'partials/dataFactoryList.html',
+                controller: 'DataFactoryList',
+                access: {
+                    requiredLogin: true
+                }
+            }).otherwise({
+                redirectTo: '/login'
+            });
 });
 
 myApp.run(function ($rootScope, $window, $location, AuthenticationFactory, $splash) {
@@ -90,7 +90,7 @@ myApp.run(function ($rootScope, $window, $location, AuthenticationFactory, $spla
         $rootScope.role = AuthenticationFactory.userRole;
         // if the user is already logged in, take him to the home page
         if (AuthenticationFactory.isLogged == true && $location.path() == '/login') {
-            $location.path('/home');
+            $location.path('/data-factories');
         }
     });
 });

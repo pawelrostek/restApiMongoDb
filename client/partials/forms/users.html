@@ -4,17 +4,25 @@
     </div>
     <form data-toggle="validator" name="formElement" ng-submit="save(formElement.$valid)">
         <div class="modal-body">
-            <input type="number" ng-model="formData.user_id" class="form-control" placeholder="ID" ng-readonly="{{formData.isReadonly}}" required>
-            <input type="number" ng-model="formData.user_type_id" class="form-control" placeholder="Typ" ng-readonly="{{formData.isReadonly}}" required>
-            <input type="text" ng-model="formData.user_external_id" class="form-control" placeholder="External ID" ng-readonly="{{formData.isReadonly}}" required>
+            <div class="form-group">
+                <select name="type_id" class="form-control"
+                        ng-model="formData.type_id" 
+                        ng-options="item._id as item.name for item in userTypes"
+                        required> 
+                    <option value="">Select type</option> 
+                </select> 
+            </div>
+            <input type="text" ng-model="formData.external_id" class="form-control" placeholder="External ID" ng-readonly="{{formData.isReadonly}}" required>
             <input type="text" ng-model="formData.first_name" class="form-control" placeholder="First name" ng-readonly="{{formData.isReadonly}}" required>
             <input type="text" ng-model="formData.last_name" class="form-control" placeholder="Last name" ng-readonly="{{formData.isReadonly}}" required>
-            <input type="number" ng-model="formData.uid" class="form-control" placeholder="UID" ng-readonly="{{formData.isReadonly}}" required>
+            <input type="email" ng-model="formData.email" class="form-control" placeholder="email" ng-readonly="{{formData.isReadonly}}" required>
+            <input type="tel" ng-model="formData.phone" class="form-control" placeholder="phone" ng-readonly="{{formData.isReadonly}}" required>
             <input type="text" ng-model="formData.login" class="form-control" placeholder="Login" ng-readonly="{{formData.isReadonly}}" required>
             <input type="password" ng-model="formData.password" class="form-control" placeholder="Password" ng-readonly="{{formData.isReadonly}}" required>
         </div>
         <div class="modal-footer">
-            <button type="submit" class="btn btn-primary">Zapisz</button>
+            <button type="submit" class="btn btn-danger" ng-show="(formData.isReadonly)">Usuń</button>
+            <button type="submit" class="btn btn-primary" ng-show="!(formData.isReadonly)">Zapisz</button>
             <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
         </div>
     </form>

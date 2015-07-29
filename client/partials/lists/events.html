@@ -1,0 +1,21 @@
+<table class="table table-striped css-serial">
+    <tr>
+        <th>lp.</th>
+        <th>Event type</th>
+        <th>Content</th>
+        <th>Insert time</th>
+        <th>Action</th>
+    </tr>
+    <tr ng-repeat="item in dataList">
+        <td>&nbsp;</td>
+        <td>{{(eventTypes| filter : {_id: item.type_id})[0].name }}</td>
+        <td>{{item.content}}</td>
+        <td>{{item.insert_time| date:'yyyy-MM-dd HH:mm' : format : timezone}}</td>
+        <td>
+            <div class="pull-right">
+                <button ng-click="editItem('events', item)" class="btn btn-xs btn-info" value="btn-xs" type="button"><span class="glyphicon glyphicon-pencil"></span></button>
+                <button ng-click="delItem('events', item)" class="btn btn-xs btn-danger" value="btn-xs" type="button"><span class="glyphicon glyphicon-trash"></span></button>
+            </div>
+        </td>
+    </tr>
+</table>

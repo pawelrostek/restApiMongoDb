@@ -4,11 +4,19 @@
     </div>
     <form data-toggle="validator" name="formElement" ng-submit="save(formElement.$valid)">
         <div class="modal-body">
-            <input type="number" ng-model="formData.event_id" class="form-control" placeholder="ID" ng-readonly="{{formData.isReadonly}}" required>
-            <input type="number" ng-model="formData.event_type_id" class="form-control" placeholder="Type ID" ng-readonly="{{formData.isReadonly}}" required>
+            <div class="form-group">
+                <select name="type_id" class="form-control"
+                        ng-model="formData.type_id" 
+                        ng-options="item._id as item.name for item in eventTypes"
+                        required> 
+                    <option value="">Select type</option> 
+                </select> 
+            </div>
+            <input type="text" ng-model="formData.content" class="form-control" placeholder="Content" ng-readonly="{{formData.isReadonly}}">
         </div>
         <div class="modal-footer">
-            <button type="submit" class="btn btn-primary" >Zapisz</button>
+            <button type="submit" class="btn btn-danger" ng-show="(formData.isReadonly)">Usuń</button>
+            <button type="submit" class="btn btn-primary" ng-show="!(formData.isReadonly)">Zapisz</button>
             <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
         </div>
     </form>

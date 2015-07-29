@@ -1,0 +1,27 @@
+<table class="table table-striped css-serial">
+    <tr>
+        <th>lp.</th>
+        <th>Name</th>
+        <th>Login</th>
+        <th>External ID</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>User type</th>
+        <th>Action</th>
+    </tr>
+    <tr ng-repeat="item in dataList">
+        <td>&nbsp;</td>
+        <td>{{item.first_name}} {{item.last_name}}</td>
+        <td>{{item.login}}</td>
+        <td>{{item.external_id}}</td>
+        <td>{{item.email}}</td>
+        <td>{{item.phone}}</td>
+        <td>{{(userTypes| filter : {_id: item.type_id})[0].name }}</td>
+        <td>
+            <div class="pull-right">
+                <button ng-click="editItem('users', item)" class="btn btn-xs btn-info" value="btn-xs" type="button"><span class="glyphicon glyphicon-pencil"></span></button>
+                <button ng-click="delItem('users', item)" class="btn btn-xs btn-danger" value="btn-xs" type="button"><span class="glyphicon glyphicon-trash"></span></button>
+            </div>
+        </td>
+    </tr>
+</table>

@@ -1,9 +1,9 @@
 /**
  * 
- *  Model: Event Types
+ *  Model: User Types
  *      
  *  @author         Paweł Rostek
- *  @description    Model of Event Types
+ *  @description    Model of User Types
  *  
  */
 
@@ -13,14 +13,15 @@ var autoIncrement = require('mongoose-auto-increment');
 var mongoose = restful.mongoose;
 
 // Model schema
-var eventTypesSchema = new mongoose.Schema({
+var userTypesSchema = new mongoose.Schema({
     name: String,
+    group: String,
     description: String,
     insert_time: {type: Date, default: Date.now}
 });
 
 autoIncrement.initialize(mongoose);
-eventTypesSchema.plugin(autoIncrement.plugin, 'EventTypes');
+userTypesSchema.plugin(autoIncrement.plugin, 'UserTypes');
 
 // Return model
-module.exports = restful.model('EventTypes', eventTypesSchema);
+module.exports = restful.model('UserTypes', userTypesSchema);

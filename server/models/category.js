@@ -8,16 +8,19 @@
  */
 
 // Dependencies
-var restful = require('node-restful'),
-  mongoose = restful.mongoose;
+var restful = require('node-restful');
+var autoIncrement = require('mongoose-auto-increment');
+var mongoose = restful.mongoose;
 
 // Model schema
 var categorySchema = new mongoose.Schema({
-  id: Number,
-  name: String,
-  description: String,
-  insert_time: { type: Date, default: Date.now }
+    name: String,
+    description: String,
+    insert_time: {type: Date, default: Date.now}
 });
+
+autoIncrement.initialize(mongoose);
+categorySchema.plugin(autoIncrement.plugin, 'Category');
 
 // Return model
 module.exports = restful.model('Category', categorySchema);

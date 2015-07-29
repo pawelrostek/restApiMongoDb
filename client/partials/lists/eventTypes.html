@@ -1,0 +1,19 @@
+<table class="table table-striped css-serial">
+    <tr>
+        <th>lp.</th>
+        <th>Name</th>
+        <th>Desctiprion</th>
+        <th>Action</th>
+    </tr>
+    <tr ng-repeat="item in dataList">
+        <td>&nbsp;</td>
+        <td>{{item.name}}</td>
+        <td>{{item.description}}</td>
+        <td>
+            <div class="pull-right">
+                <button ng-click="editItem('eventTypes', item)" class="btn btn-xs btn-info" value="btn-xs" type="button"><span class="glyphicon glyphicon-pencil"></span></button>
+                <button ng-click="delItem('eventTypes', item)" class="btn btn-xs btn-danger" value="btn-xs" type="button"><span class="glyphicon glyphicon-trash"></span></button>
+            </div>
+        </td>
+    </tr>
+</table>
